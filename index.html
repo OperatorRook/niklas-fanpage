@@ -64,8 +64,15 @@
             <img src="file_000000003a288230bb5983d03f80a834.png" alt="Niklas" class="w-48 h-48 md:w-60 md:h-60 object-cover rounded-2xl border-2 border-cyan-glow shadow-[0_0_25px_rgba(0,243,255,0.4)]">
         </div>
 
+        <!-- Anzeigebereich für den Spruch -->
+        <div class="h-12 flex items-center justify-center my-2 text-center">
+            <p id="quote" class="text-cyan-glow font-bold text-lg md:text-xl italic neon-glow tracking-wide">
+                Klicke den Button, um den Hype zu starten!
+            </p>
+        </div>
+
         <!-- Hype-Meter Display -->
-        <div class="w-full neon-box bg-slate-900/80 backdrop-blur-md rounded-2xl p-6 text-center my-6">
+        <div class="w-full neon-box bg-slate-900/80 backdrop-blur-md rounded-2xl p-6 text-center my-4">
             <span class="text-xs uppercase tracking-widest text-cyan-dark font-bold block mb-1">Aktueller Hype-Level</span>
             <div id="counter" class="text-6xl md:text-8xl font-black font-orbitron text-white neon-glow my-2">0</div>
             
@@ -77,7 +84,7 @@
 
         <!-- Reset Button -->
         <button onclick="resetHype()" class="text-xs text-gray-500 hover:text-red-400 uppercase tracking-widest transition-colors mt-2">
-            <i class="fa-solid fa-rotate-right mr-1">}</i> Reset Counter
+            <i class="fa-solid fa-rotate-right mr-1"></i> Reset Counter
         </button>
     </main>
 
@@ -86,8 +93,18 @@
         Powered by GitHub Pages &bull; OperatorRook
     </footer>
 
-    <!-- JavaScript für den Zähler & LocalStorage -->
+    <!-- JavaScript für Zähler & Sprüche -->
     <script>
+        const quotes = [
+            "Niklas ist einfach unvergleichlich!",
+            "100% Schwul für Niklas!",
+            "Der Hype erreicht ein neues Level!",
+            "Niemand kommt an Niklas ran!",
+            "Mehr Hype geht gar nicht!",
+            "Niklas = Legende!",
+            "Absoluter Giga-Hype für Niklas!"
+        ];
+
         let count = localStorage.getItem('niklas_hype_count');
         
         if (count === null) {
@@ -97,12 +114,18 @@
         }
 
         const counterElement = document.getElementById('counter');
+        const quoteElement = document.getElementById('quote');
+        
         counterElement.innerText = count;
 
         function incrementHype() {
             count++;
             counterElement.innerText = count;
             localStorage.setItem('niklas_hype_count', count);
+
+            // Zufälligen Spruch auswählen
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            quoteElement.innerText = randomQuote;
         }
 
         function resetHype() {
@@ -110,6 +133,7 @@
                 count = 0;
                 counterElement.innerText = count;
                 localStorage.setItem('niklas_hype_count', count);
+                quoteElement.innerText = "Klicke den Button, um den Hype zu starten!";
             }
         }
     </script>
