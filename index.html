@@ -16,25 +16,6 @@
                             glow: '#00f3ff',
                             dark: '#008b94',
                         }
-                    },
-                    animation: {
-                        'pulse-glow': 'pulseGlow 2s infinite alternate',
-                        'float': 'float 4s ease-in-out infinite',
-                        'bounce-short': 'bounceShort 0.2s ease-in-out',
-                    },
-                    keyframes: {
-                        pulseGlow: {
-                            '0%': { filter: 'drop-shadow(0 0 15px rgba(0, 243, 255, 0.5))' },
-                            '100%': { filter: 'drop-shadow(0 0 40px rgba(0, 243, 255, 1))' }
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-10px)' }
-                        },
-                        bounceShort: {
-                            '0%, 100%': { transform: 'scale(1)' },
-                            '50%': { transform: 'scale(1.15)' }
-                        }
                     }
                 }
             }
@@ -44,7 +25,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700;900&display=swap" rel="stylesheet">
-    
     <style>
         body {
             font-family: 'Rajdhani', sans-serif;
@@ -52,423 +32,86 @@
             color: #ffffff;
             overflow-x: hidden;
         }
-
-        .font-orbitron {
+        h1, h2, .font-orbitron {
             font-family: 'Orbitron', sans-serif;
         }
-
-        /* Neon Glow Effects */
-        .text-glow {
-            text-shadow: 0 0 10px #00f3ff, 0 0 25px #00f3ff, 0 0 50px #008b94;
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.7), 0 0 20px rgba(0, 243, 255, 0.5), 0 0 30px rgba(0, 243, 255, 0.3);
         }
-
-        .text-glow-white {
-            text-shadow: 0 0 10px #ffffff, 0 0 20px #00f3ff;
-        }
-
-        .box-glow {
-            box-shadow: 0 0 25px rgba(0, 243, 255, 0.35), inset 0 0 15px rgba(0, 243, 255, 0.2);
-            border: 2px solid rgba(0, 243, 255, 0.6);
-        }
-
-        /* Canvas Background */
-        #particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* Glassmorphism card */
-        .glass-card {
-            background: rgba(8, 14, 28, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-        }
-
-        /* Confetti Canvas */
-        #confetti-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 50;
-        }
-
-        /* Floating numbers animation */
-        .click-popup {
-            position: absolute;
-            color: #00f3ff;
-            font-weight: 900;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            pointer-events: none;
-            animation: floatUpFade 0.8s forwards ease-out;
-            text-shadow: 0 0 10px #00f3ff;
-        }
-
-        @keyframes floatUpFade {
-            0% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-50px) scale(1.4);
-            }
+        .neon-box {
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2), inset 0 0 15px rgba(0, 243, 255, 0.1);
+            border: 1px solid rgba(0, 243, 255, 0.4);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between items-center relative px-4 py-8 select-none">
+<body class="min-h-screen flex flex-col items-center justify-between p-4 selection:bg-cyan-glow selection:text-black">
 
-    <!-- Interactive Particle Background Canvas -->
-    <canvas id="particle-canvas"></canvas>
-    
-    <!-- Confetti FX Canvas -->
-    <canvas id="confetti-canvas"></canvas>
-
-    <!-- Header / Title Banner -->
-    <header class="z-10 text-center mt-2 mb-4 animate-float">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-400/60 text-cyan-300 text-xs md:text-sm tracking-widest uppercase mb-4 box-glow font-bold">
-            <i class="fa-solid fa-heart text-cyan-400 animate-pulse"></i>
-            OFFIZIELLER NIKLAS HYPE CLUB
-            <i class="fa-solid fa-heart text-cyan-400 animate-pulse"></i>
-        </div>
-        
-        <h1 class="text-4xl sm:text-6xl md:text-7xl font-black font-orbitron text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-cyan-400 text-glow tracking-tight uppercase leading-none">
-            Werd schwul <br class="sm:hidden"/>
-            <span class="text-white text-glow-white">für Niklas</span>
+    <!-- Header -->
+    <header class="w-full max-w-xl text-center py-6">
+        <h1 class="text-3xl md:text-5xl font-black uppercase tracking-wider text-cyan-glow neon-glow">
+            Werd schwul für Niklas
         </h1>
-        <p class="text-cyan-400 font-bold tracking-wider text-base md:text-xl mt-2 uppercase">
-            ⚡ 100% Niklas 4K Hype • Join the Squad ⚡
+        <p class="text-gray-400 tracking-widest uppercase text-xs md:text-sm mt-2">
+            Minimalist Cyberpunk Hype-Meter v1.0
         </p>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="z-10 my-auto flex flex-col items-center max-w-xl w-full">
+    <!-- Main Content -->
+    <main class="w-full max-w-md flex flex-col items-center my-auto">
         
-        <!-- Main Artwork Card -->
-        <div class="glass-card p-5 sm:p-8 rounded-3xl box-glow flex flex-col items-center relative overflow-hidden transition-all duration-300 hover:border-cyan-300">
-            
-            <!-- Radial background highlight -->
-            <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent pointer-events-none"></div>
-
-            <!-- Character Image Display -->
-            <div class="relative group cursor-pointer" id="image-container" onclick="triggerPraiseEffect(event)">
-                <div class="absolute -inset-2 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-2xl blur-lg opacity-60 group-hover:opacity-100 transition duration-500"></div>
-                
-                <!-- Main Image -->
-                <img src="https://lh3.googleusercontent.com/d/1XN-c0M1S6O4Q_V7V8z2H1r_z-x9Y0gL8" 
-                     alt="Werd schwul für Niklas Artwork" 
-                     class="relative rounded-xl w-full max-w-md object-contain animate-pulse-glow transition-transform duration-300 transform group-hover:scale-[1.03]"
-                     onerror="this.onerror=null; this.src='https://placehold.co/600x600/0a101e/00f3ff?text=Werd+Schwul+F%C3%BCr+Niklas';" />
-            </div>
-
-            <!-- Dynamic Quote / Status Display -->
-            <div class="w-full mt-6 text-center bg-cyan-950/40 border border-cyan-500/30 p-4 rounded-xl">
-                <p id="quote-text" class="text-lg md:text-2xl font-black text-cyan-200 italic min-h-[3rem] flex items-center justify-center">
-                    "Klicke auf den Button, um den Niklas-Hype zu starten! ⚡"
-                </p>
-            </div>
-
-            <!-- Interactive Soundboard / Reaction Buttons -->
-            <div class="w-full mt-4 grid grid-cols-3 gap-2">
-                <button onclick="triggerSound('hype')" class="py-2 px-3 bg-cyan-900/40 hover:bg-cyan-800/60 border border-cyan-500/40 rounded-lg text-xs font-bold text-cyan-300 hover:text-white transition flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-fire text-cyan-400"></i> Hype UP!
-                </button>
-                <button onclick="triggerSound('heart')" class="py-2 px-3 bg-cyan-900/40 hover:bg-cyan-800/60 border border-cyan-500/40 rounded-lg text-xs font-bold text-cyan-300 hover:text-white transition flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-heart text-cyan-400"></i> Simp Alert
-                </button>
-                <button onclick="triggerSound('bass')" class="py-2 px-3 bg-cyan-900/40 hover:bg-cyan-800/60 border border-cyan-500/40 rounded-lg text-xs font-bold text-cyan-300 hover:text-white transition flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-bolt text-cyan-400"></i> 4K Power
-                </button>
-            </div>
-
-            <!-- Action Buttons Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mt-6 relative">
-                <!-- Support / Like Button (+1 Counter) -->
-                <button onclick="triggerPraiseEffect(event)" 
-                        id="hype-btn"
-                        class="px-6 py-4 rounded-xl font-orbitron font-black text-base bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-slate-950 shadow-xl shadow-cyan-500/40 transform active:scale-95 transition-all flex items-center justify-center gap-2 relative">
-                    <i class="fa-solid fa-heart text-slate-950 text-xl animate-bounce"></i>
-                    <span>NIKLAS HYPE (<span id="counter" class="text-slate-950">0</span>)</span>
-                </button>
-
-                <!-- Copy Share Link Button -->
-                <button onclick="copyTrollLink()" 
-                        class="px-6 py-4 rounded-xl font-orbitron font-bold text-sm bg-slate-900/90 hover:bg-slate-800 text-cyan-300 border border-cyan-400/60 hover:border-cyan-300 transform active:scale-95 transition-all flex items-center justify-center gap-2 box-glow">
-                    <i class="fa-solid fa-share-nodes text-lg"></i>
-                    <span id="copy-btn-text">Link Teilen 🚀</span>
-                </button>
-            </div>
-
-            <!-- Reset Counter Button -->
-            <div class="mt-4 text-center">
-                <button onclick="resetCounter()" class="text-xs text-cyan-500/60 hover:text-cyan-400 underline transition">
-                    Zähler auf 0 zurücksetzen
-                </button>
-            </div>
-
+        <!-- Bild zentriert mit Neon-Rahmen -->
+        <div class="w-full flex justify-center items-center my-4">
+            <img src="file_000000003a288230bb5983d03f80a834.png" alt="Niklas" class="w-48 h-48 md:w-60 md:h-60 object-cover rounded-2xl border-2 border-cyan-glow shadow-[0_0_25px_rgba(0,243,255,0.4)]">
         </div>
 
+        <!-- Hype-Meter Display -->
+        <div class="w-full neon-box bg-slate-900/80 backdrop-blur-md rounded-2xl p-6 text-center my-6">
+            <span class="text-xs uppercase tracking-widest text-cyan-dark font-bold block mb-1">Aktueller Hype-Level</span>
+            <div id="counter" class="text-6xl md:text-8xl font-black font-orbitron text-white neon-glow my-2">0</div>
+            
+            <!-- Click Button -->
+            <button onclick="incrementHype()" class="w-full mt-6 py-4 px-6 bg-cyan-glow hover:bg-cyan-400 text-black font-black uppercase tracking-wider rounded-xl text-lg shadow-[0_0_20px_rgba(0,243,255,0.6)] transition-all transform active:scale-95 cursor-pointer">
+                <i class="fa-solid fa-bolt mr-2"></i> Hype steigern!
+            </button>
+        </div>
+
+        <!-- Reset Button -->
+        <button onclick="resetHype()" class="text-xs text-gray-500 hover:text-red-400 uppercase tracking-widest transition-colors mt-2">
+            <i class="fa-solid fa-rotate-right mr-1">}</i> Reset Counter
+        </button>
     </main>
 
-    <!-- Notification Toast -->
-    <div id="toast" class="fixed bottom-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
-        <div class="bg-cyan-950 border-2 border-cyan-400 text-cyan-200 px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3 box-glow">
-            <i class="fa-solid fa-circle-check text-cyan-400 text-xl"></i>
-            <span id="toast-message" class="font-bold">Link in Zwischenablage kopiert!</span>
-        </div>
-    </div>
-
     <!-- Footer -->
-    <footer class="z-10 mt-8 text-center text-xs text-cyan-500/80 font-bold">
-        <p>© 2026 Niklas 4K • Official "Werd schwul für Niklas" Fan Club ⚡</p>
+    <footer class="w-full text-center py-4 text-xs text-gray-600 uppercase tracking-widest">
+        Powered by GitHub Pages &bull; OperatorRook
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- JavaScript für den Zähler & LocalStorage -->
     <script>
-        // Hype Quotes array
-        const quotes = [
-            '"Es gibt kein Entkommen: Werd schwul für Niklas! 💙"',
-            '"Niklas 4K: Der Grund, warum alle schwul werden. ⚡"',
-            '"Niemand kann diesem Cyber-Blick widerstehen! 😎"',
-            '"Werd schwul für Niklas – Jetzt erst recht!"',
-            '"100% Cyber-Attraktivität garantiert! 🔥"',
-            '"Niklas Squad = Absolute Legenden!"'
-        ];
-
-        // Strict 0 Start Counter Logic
-        let clickCount = parseInt(localStorage.getItem('niklas_hype_counter')) || 0;
-        document.getElementById('counter').innerText = clickCount;
-
-        // Interactive Audio Synthesizer for cool Web Audio SFX
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-        function playSynthesizedSound(freqStart, freqEnd, duration, type = 'sine') {
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            
-            osc.type = type;
-            osc.frequency.setValueAtTime(freqStart, audioCtx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(freqEnd, audioCtx.currentTime + duration);
-            
-            gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
-            
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            
-            osc.start();
-            osc.stop(audioCtx.currentTime + duration);
+        let count = localStorage.getItem('niklas_hype_count');
+        
+        if (count === null) {
+            count = 0;
+        } else {
+            count = parseInt(count);
         }
 
-        function triggerSound(soundType) {
-            if (soundType === 'hype') {
-                playSynthesizedSound(300, 900, 0.3, 'sawtooth');
-            } else if (soundType === 'heart') {
-                playSynthesizedSound(523.25, 1046.50, 0.25, 'sine');
-            } else if (soundType === 'bass') {
-                playSynthesizedSound(150, 40, 0.4, 'triangle');
-            }
-            spawnConfetti();
+        const counterElement = document.getElementById('counter');
+        counterElement.innerText = count;
+
+        function incrementHype() {
+            count++;
+            counterElement.innerText = count;
+            localStorage.setItem('niklas_hype_count', count);
         }
 
-        // Praise Button Action (+1 Increase)
-        function triggerPraiseEffect(event) {
-            clickCount += 1;
-            localStorage.setItem('niklas_hype_counter', clickCount);
-            document.getElementById('counter').innerText = clickCount;
-
-            // Show floating +1 text
-            createFloatingText(event, "+1");
-
-            // Change Quote randomly
-            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            document.getElementById('quote-text').innerText = randomQuote;
-
-            // Play Sound Effect
-            playSynthesizedSound(440 + (clickCount % 10) * 30, 880 + (clickCount % 10) * 30, 0.15);
-
-            // Trigger Confetti FX on multiples of 10
-            if (clickCount % 10 === 0) {
-                spawnConfetti();
-            }
-
-            // Image pop effect
-            const img = document.querySelector('#image-container img');
-            img.style.transform = 'scale(1.06)';
-            setTimeout(() => {
-                img.style.transform = 'scale(1)';
-            }, 120);
-        }
-
-        function createFloatingText(e, text) {
-            const popup = document.createElement('div');
-            popup.className = 'click-popup';
-            popup.innerText = text;
-            
-            const x = e.clientX || window.innerWidth / 2;
-            const y = e.clientY || window.innerHeight / 2;
-            
-            popup.style.left = `${x - 15}px`;
-            popup.style.top = `${y - 30}px`;
-            
-            document.body.appendChild(popup);
-            setTimeout(() => popup.remove(), 800);
-        }
-
-        function resetCounter() {
-            clickCount = 0;
-            localStorage.setItem('niklas_hype_counter', 0);
-            document.getElementById('counter').innerText = 0;
-            showToast('Zähler zurückgesetzt auf 0!');
-        }
-
-        // Clipboard Copy Logic
-        function copyTrollLink() {
-            const tempInput = document.createElement('input');
-            tempInput.value = window.location.href;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            
-            try {
-                document.execCommand('copy');
-                showToast('Link kopiert! Verbreite die Botschaft! ⚡');
-                playSynthesizedSound(600, 1200, 0.25);
-                spawnConfetti();
-            } catch (err) {
-                showToast('Kopieren fehlgeschlagen.');
-            }
-            document.body.removeChild(tempInput);
-        }
-
-        // Toast Notification System
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-message');
-            toastMsg.innerText = message;
-            
-            toast.classList.remove('translate-y-24', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
-
-            setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-24', 'opacity-0');
-            }, 3000);
-        }
-
-        /* Dynamic Particle Background System */
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2.5 + 0.8;
-                this.speedX = (Math.random() - 0.5) * 1.2;
-                this.speedY = (Math.random() - 0.5) * 1.2;
-                this.alpha = Math.random() * 0.7 + 0.3;
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-                    this.reset();
-                }
-            }
-
-            draw() {
-                ctx.fillStyle = `rgba(0, 243, 255, ${this.alpha})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+        function resetHype() {
+            if (confirm("Möchtest du den Hype-Zähler wirklich auf 0 zurücksetzen?")) {
+                count = 0;
+                counterElement.innerText = count;
+                localStorage.setItem('niklas_hype_count', count);
             }
         }
-
-        for (let i = 0; i < 90; i++) {
-            particles.push(new Particle());
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
-
-        /* Confetti Effect Code */
-        const confettiCanvas = document.getElementById('confetti-canvas');
-        const cCtx = confettiCanvas.getContext('2d');
-        let confettiPieces = [];
-
-        function resizeConfettiCanvas() {
-            confettiCanvas.width = window.innerWidth;
-            confettiCanvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeConfettiCanvas);
-        resizeConfettiCanvas();
-
-        function spawnConfetti() {
-            for (let i = 0; i < 40; i++) {
-                confettiPieces.push({
-                    x: window.innerWidth / 2,
-                    y: window.innerHeight / 3,
-                    size: Math.random() * 9 + 4,
-                    color: ['#00f3ff', '#008b94', '#ffffff', '#3b82f6', '#60a5fa'][Math.floor(Math.random() * 5)],
-                    vx: (Math.random() - 0.5) * 14,
-                    vy: (Math.random() - 0.5) * 14 - 3,
-                    life: 100
-                });
-            }
-        }
-
-        function animateConfetti() {
-            cCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-            confettiPieces.forEach((c, index) => {
-                c.x += c.vx;
-                c.y += c.vy;
-                c.vy += 0.25;
-                c.life -= 2;
-
-                cCtx.fillStyle = c.color;
-                cCtx.beginPath();
-                cCtx.arc(c.x, c.y, c.size / 2, 0, Math.PI * 2);
-                cCtx.fill();
-
-                if (c.life <= 0) {
-                    confettiPieces.splice(index, 1);
-                }
-            });
-            requestAnimationFrame(animateConfetti);
-        }
-        animateConfetti();
     </script>
 </body>
 </html>
