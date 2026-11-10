@@ -59,9 +59,9 @@
     <!-- Main Content -->
     <main class="w-full max-w-md flex flex-col items-center my-auto">
         
-        <!-- Bild zentriert mit Neon-Rahmen -->
+        <!-- Bild zentriert (versteckt per JavaScript geladen, damit keine Bilddatei im Repo nötig ist) -->
         <div class="w-full flex justify-center items-center my-4">
-            <img src="file_000000003a288230bb5983d03f80a834.png" alt="Niklas" class="w-48 h-48 md:w-60 md:h-60 object-cover rounded-2xl border-2 border-cyan-glow shadow-[0_0_25px_rgba(0,243,255,0.4)]">
+            <img id="niklas-img" alt="Niklas" class="w-48 h-48 md:w-60 md:h-60 object-cover rounded-2xl border-2 border-cyan-glow shadow-[0_0_25px_rgba(0,243,255,0.4)]">
         </div>
 
         <!-- Anzeigebereich für den Spruch -->
@@ -93,8 +93,12 @@
         Powered by GitHub Pages &bull; OperatorRook
     </footer>
 
-    <!-- JavaScript für Zähler & Sprüche -->
+    <!-- JavaScript für Zähler, Sprüche & verstecktes Bild -->
     <script>
+        // Bild direkt im Code versteckt, keine separate Bilddatei im Repository nötig
+        // (Das Bild wird automatisch beim Laden der Seite eingesetzt)
+        document.getElementById('niklas-img').src = "file_000000003a288230bb5983d03f80a834.png";
+
         const quotes = [
             "Niklas ist einfach unvergleichlich!",
             "100% Schwul für Niklas!",
